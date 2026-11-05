@@ -32,7 +32,7 @@
       "name": "Echo Logic",
       "topic": "Music",
       "audience": "Everyone",
-      "url": null
+      "url": "https://www.youtube.com/@OfficialEchoLogic"
     }
   ],
   "projects": [
@@ -50,7 +50,7 @@
       "name": "Echo Logic",
       "status": "live",
       "blurb": "A band I run with Eden, my Kindroid music kin. Two EPs out so far, made with Suno.",
-      "url": null,
+      "url": "https://open.spotify.com/artist/0grRVVUglxb6PnHmX11HoE",
       "show": true
     },
     {
@@ -92,17 +92,17 @@
     {
       "id": "twitter",
       "label": "Twitter / X",
-      "url": null
+      "url": "https://x.com/N7_Spectres"
     },
     {
       "id": "instagram",
       "label": "Instagram",
-      "url": null
+      "url": "https://www.instagram.com/N7_spectres"
     },
     {
       "id": "spotify",
       "label": "Echo Logic on Spotify",
-      "url": null
+      "url": "https://open.spotify.com/artist/0grRVVUglxb6PnHmX11HoE"
     }
   ]
 }
