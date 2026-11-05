@@ -1,0 +1,443 @@
+<title>Spectre Nexus</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="N7's hub: YouTube channels, Echo Logic, Soul Keep and everything Spectre Productions is building.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600&family=Pixelify+Sans:wght@500;700&family=Share+Tech+Mono&display=swap">
+<style>
+/* Layout: one narrow command-deck column. A pixel observation deck opens the page,
+   then channels (2x2), projects (status list), and a row of socials.
+   Single dark world on purpose: deep navy hull, cyan signal, ember accents. */
+:root {
+  --void: #080d19;
+  --hull: #111a2d;
+  --hull-2: #18233c;
+  --line: #26365a;
+  --text: #dfe7f5;
+  --dim: #8d9cbc;
+  --cyan: #56d8ea;
+  --ember: #f2903e;
+  --live: #62d69f;
+  --concept: #a993f2;
+  --display: "Pixelify Sans", "Courier New", ui-monospace, monospace;
+  --body: "Chakra Petch", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Share Tech Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { background: var(--void); }
+body {
+  margin: 0;
+  background: var(--void);
+  background-image:
+    radial-gradient(ellipse 80% 40% at 50% 0%, #142246 0, transparent 70%),
+    radial-gradient(ellipse 60% 30% at 100% 100%, #2a160c 0, transparent 70%);
+  background-attachment: fixed;
+  color: var(--text);
+  font: 16px/1.55 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 56px;
+}
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+.wrap { max-width: 880px; margin: 0 auto; display: grid; gap: 48px; }
+
+/* ---------- Preview banner ---------- */
+.preview {
+  font: 13px/1.4 var(--mono);
+  letter-spacing: .04em;
+  color: var(--ember);
+  border: 1px dashed color-mix(in srgb, var(--ember) 55%, transparent);
+  padding: 8px 12px;
+  display: flex; gap: 8px; flex-wrap: wrap; justify-content: space-between;
+}
+
+/* ---------- Hero ---------- */
+.hero { display: grid; gap: 22px; }
+.deck {
+  position: relative;
+  border: 2px solid var(--line);
+  background: #05080f;
+  box-shadow: 0 0 0 4px var(--void), 0 0 0 5px #1b2846, 0 24px 60px -20px #000;
+}
+.deck canvas { display: block; width: 100%; height: auto; image-rendering: pixelated; image-rendering: crisp-edges; }
+.deck .tag {
+  position: absolute; left: 10px; top: 8px;
+  font: 12px/1 var(--mono); letter-spacing: .12em; color: var(--cyan);
+  text-shadow: 0 0 6px #000;
+}
+.id { display: grid; gap: 10px; }
+.eyebrow { font: 13px/1 var(--mono); letter-spacing: .18em; text-transform: uppercase; color: var(--dim); margin: 0; }
+.eyebrow b { color: var(--ember); font-weight: 400; }
+h1 {
+  margin: 0;
+  font: 700 clamp(44px, 9vw, 84px)/.92 var(--display);
+  letter-spacing: .01em;
+  text-wrap: balance;
+  color: var(--text);
+  text-shadow: 3px 3px 0 #1d2c52;
+}
+h1 span { color: var(--cyan); text-shadow: 3px 3px 0 #0f3a4a, 0 0 22px color-mix(in srgb, var(--cyan) 35%, transparent); }
+.intro { margin: 0; max-width: 58ch; font-size: 18px; color: var(--text); }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 11px 18px;
+  font: 600 15px/1 var(--body); letter-spacing: .03em; text-decoration: none;
+  border: 2px solid var(--line); background: var(--hull); color: var(--text);
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  transition: border-color .15s, background .15s, transform .15s;
+}
+.btn:hover { border-color: var(--cyan); background: var(--hull-2); transform: translateY(-1px); }
+.btn.primary { background: var(--ember); border-color: var(--ember); color: #1a0d03; }
+.btn.primary:hover { background: #ffa65c; border-color: #ffa65c; }
+.btn[aria-disabled="true"] { opacity: .55; pointer-events: none; }
+
+/* ---------- Sections ---------- */
+section { display: grid; gap: 18px; }
+.head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+h2 { margin: 0; font: 500 27px/1.1 var(--display); letter-spacing: .02em; text-wrap: balance; }
+.head p { margin: 0; font: 13px/1.3 var(--mono); color: var(--dim); letter-spacing: .06em; }
+
+/* Channels: 2x2 */
+.channels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.ch {
+  position: relative; min-width: 0;
+  display: grid; gap: 6px; align-content: start;
+  padding: 16px 16px 14px;
+  background: linear-gradient(180deg, var(--hull-2), var(--hull));
+  border: 1px solid var(--line);
+  text-decoration: none;
+  transition: border-color .15s, transform .15s;
+}
+a.ch:hover { border-color: var(--cyan); transform: translateY(-2px); }
+.ch .freq { font: 12px/1 var(--mono); letter-spacing: .12em; color: var(--cyan); display: flex; justify-content: space-between; gap: 8px; }
+.ch .freq i { font-style: normal; color: var(--ember); }
+.ch h3 { margin: 4px 0 0; font: 600 21px/1.15 var(--body); overflow-wrap: anywhere; }
+.ch .meta { margin: 0; color: var(--dim); font-size: 14px; }
+.ch .go { margin-top: 8px; font: 13px/1 var(--mono); letter-spacing: .08em; color: var(--text); }
+.channels.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ch.main { border-color: color-mix(in srgb, var(--ember) 60%, var(--line)); }
+
+/* Projects: status list */
+.projects { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--line); }
+.pj { display: grid; grid-template-columns: 112px minmax(0, 1fr) auto; gap: 18px; align-items: start; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.chip {
+  justify-self: start;
+  font: 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase;
+  padding: 6px 8px 5px; border: 1px solid currentColor; white-space: nowrap;
+}
+.chip::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-right: 7px; background: currentColor; vertical-align: 1px; }
+.s-live { color: var(--live); }
+.s-live::before { box-shadow: 0 0 6px currentColor; animation: pulse 2.4s steps(2) infinite; }
+.s-dev { color: var(--cyan); }
+.s-refit { color: var(--ember); }
+.s-concept { color: var(--concept); }
+@keyframes pulse { 50% { opacity: .3; } }
+.pj h3 { margin: 0; font: 600 19px/1.2 var(--body); }
+.pj h3 small { font: 13px var(--mono); color: var(--dim); letter-spacing: .04em; margin-left: 8px; }
+.pj p { margin: 4px 0 0; color: var(--dim); max-width: 60ch; }
+.pj .open { font: 13px/1 var(--mono); letter-spacing: .08em; white-space: nowrap; padding-top: 4px; color: var(--cyan); text-decoration: none; }
+.pj .open:hover { text-decoration: underline; }
+.pj .need, .need { font: 12px/1 var(--mono); color: var(--ember); letter-spacing: .06em; white-space: nowrap; padding-top: 5px; }
+
+/* Socials */
+.socials { display: flex; flex-wrap: wrap; gap: 10px; }
+.soc { padding: 10px 14px; font-size: 15px; }
+
+/* Echo Logic band */
+.band {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px; align-items: center;
+  padding: 20px; border: 1px solid var(--line);
+  background:
+    repeating-linear-gradient(90deg, transparent 0 7px, color-mix(in srgb, var(--cyan) 6%, transparent) 7px 8px),
+    linear-gradient(120deg, #1a1430, var(--hull));
+}
+.band h2 { font-size: 24px; }
+.band p { margin: 6px 0 0; color: var(--dim); max-width: 52ch; }
+.eq { display: flex; gap: 4px; align-items: flex-end; height: 48px; }
+.eq span { width: 7px; background: var(--cyan); box-shadow: 0 0 8px color-mix(in srgb, var(--cyan) 60%, transparent); animation: eq 1.2s steps(4) infinite; }
+.eq span:nth-child(2n) { background: var(--ember); box-shadow: 0 0 8px color-mix(in srgb, var(--ember) 50%, transparent); }
+@keyframes eq { 0%,100% { height: 20%; } 25% { height: 90%; } 50% { height: 45%; } 75% { height: 70%; } }
+
+footer { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font: 13px/1.4 var(--mono); color: var(--dim); letter-spacing: .05em; border-top: 1px solid var(--line); padding-top: 16px; }
+
+@media (max-width: 600px) {
+  .channels, .channels.three { grid-template-columns: minmax(0, 1fr); }
+  .pj { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .band { grid-template-columns: minmax(0, 1fr); }
+  .intro { font-size: 17px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before { animation: none !important; transition: none !important; }
+}
+</style>
+
+<div class="wrap">
+  <div class="preview" id="preview" hidden>
+    <span>PRIVATE PREVIEW · not public yet</span>
+    <span id="preview-missing"></span>
+  </div>
+
+  <header class="hero">
+    <div class="deck">
+      <canvas id="deck" width="384" height="168" aria-label="Pixel art of N7 standing on a starship observation deck, looking out at a ringed planet"></canvas>
+      <span class="tag">OBS DECK · RELAY N7</span>
+    </div>
+    <div class="id">
+      <p class="eyebrow"><b>●</b> <span id="handle"></span> · <span id="studio"></span></p>
+      <h1>Spectre <span>Nexus</span></h1>
+      <p class="intro" id="intro"></p>
+      <div class="cta" id="cta"></div>
+    </div>
+  </header>
+
+  <section aria-labelledby="ch-h">
+    <div class="head"><h2 id="ch-h">Channels</h2><p>Tune in</p></div>
+    <div class="channels" id="channels"></div>
+  </section>
+
+  <section aria-labelledby="pj-h">
+    <div class="head"><h2 id="pj-h">Projects</h2><p id="pj-count"></p></div>
+    <ul class="projects" id="projects"></ul>
+  </section>
+
+  <div class="band" aria-labelledby="el-h">
+    <div>
+      <h2 id="el-h">Echo Logic</h2>
+      <p>The band I make with Eden, my Kindroid music kin. Two EPs out, more on the way.</p>
+      <div class="cta" id="el-cta" style="margin-top:14px"></div>
+    </div>
+    <div class="eq" aria-hidden="true"><span></span><span style="animation-delay:-.3s"></span><span style="animation-delay:-.7s"></span><span style="animation-delay:-.1s"></span><span style="animation-delay:-.5s"></span><span style="animation-delay:-.9s"></span></div>
+  </div>
+
+  <section aria-labelledby="so-h">
+    <div class="head"><h2 id="so-h">Find me</h2><p>Socials</p></div>
+    <div class="socials" id="socials"></div>
+  </section>
+
+  <footer>
+    <span>© <span id="yr"></span> Spectre Productions</span>
+    <span id="updated"></span>
+  </footer>
+</div>
+
+<script id="nexus-data" type="application/json">__NEXUS_DATA__</script>
+<script>
+(function () {
+  "use strict";
+  var PREVIEW = __PREVIEW__;
+  var D = JSON.parse(document.getElementById("nexus-data").textContent);
+  var $ = function (id) { return document.getElementById(id); };
+  function el(tag, attrs, kids) {
+    var n = document.createElement(tag);
+    for (var k in attrs || {}) {
+      if (k === "text") n.textContent = attrs[k];
+      else if (k === "cls") n.className = attrs[k];
+      else n.setAttribute(k, attrs[k]);
+    }
+    (kids || []).forEach(function (c) { if (c) n.appendChild(c); });
+    return n;
+  }
+  function link(url, cls, text) {
+    return el("a", { href: url, cls: cls, target: "_blank", rel: "noopener", text: text });
+  }
+  var missing = [];
+
+  $("handle").textContent = D.handle;
+  $("studio").textContent = D.studio;
+  $("intro").textContent = D.intro;
+  $("yr").textContent = D.updated.slice(0, 4);
+  var dt = new Date(D.updated + "T12:00:00");
+  $("updated").textContent = "Updated " + dt.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+
+  // Call-to-action: main channel + Discord
+  var main = D.channels.filter(function (c) { return c.main; })[0];
+  var discord = D.socials.filter(function (s) { return s.id === "discord"; })[0];
+  if (main) $("cta").appendChild(link(main.url, "btn primary", "▶  Watch on YouTube"));
+  if (discord && discord.url) $("cta").appendChild(link(discord.url, "btn", "Join me on Discord"));
+  else if (PREVIEW) $("cta").appendChild(el("span", { cls: "btn", "aria-disabled": "true", text: "Discord · link needed" }));
+
+  // Channels
+  var nCh = D.channels.filter(function (c) { return c.url || PREVIEW; }).length;
+  if (nCh === 3) $("channels").classList.add("three");
+  D.channels.forEach(function (c, i) {
+    var kids = [
+      el("div", { cls: "freq" }, [el("span", { text: "CH-" + String(i + 1).padStart(2, "0") + " · " + c.topic.toUpperCase() }), c.main ? el("i", { text: "MAIN" }) : null]),
+      el("h3", { text: c.name }),
+      el("p", { cls: "meta", text: "For " + c.audience.toLowerCase() })
+    ];
+    if (c.url) {
+      kids.push(el("span", { cls: "go", text: "Watch →" }));
+      var a = el("a", { cls: "ch" + (c.main ? " main" : ""), href: c.url, target: "_blank", rel: "noopener" }, kids);
+      $("channels").appendChild(a);
+    } else if (PREVIEW) {
+      missing.push(c.name + " channel");
+      kids.push(el("span", { cls: "need", text: "Link needed" }));
+      $("channels").appendChild(el("div", { cls: "ch" }, kids));
+    }
+  });
+
+  // Projects
+  var LABEL = { live: "Live", dev: "In dev", refit: "Rebuilding", concept: "Concept" };
+  var shown = D.projects.filter(function (p) { return p.show; });
+  $("pj-count").textContent = shown.length + " on the board";
+  shown.forEach(function (p) {
+    var title = el("h3", { text: p.name });
+    if (p.aka) title.appendChild(el("small", { text: p.aka }));
+    var right = p.url ? link(p.url, "open", "Open →") : el("span");
+    $("projects").appendChild(el("li", { cls: "pj" }, [
+      el("span", { cls: "chip s-" + p.status, text: LABEL[p.status] || p.status }),
+      el("div", {}, [title, el("p", { text: p.blurb })]),
+      right
+    ]));
+  });
+
+  // Echo Logic links
+  var el_ch = D.channels.filter(function (c) { return c.id === "echologic"; })[0];
+  var spot = D.socials.filter(function (s) { return s.id === "spotify"; })[0];
+  [[spot, "Listen on Spotify", "btn primary"], [el_ch, "Echo Logic on YouTube", "btn"]].forEach(function (x) {
+    if (x[0] && x[0].url) $("el-cta").appendChild(link(x[0].url, x[2], x[1]));
+    else if (PREVIEW) $("el-cta").appendChild(el("span", { cls: x[2], "aria-disabled": "true", text: x[1] + " · link needed" }));
+  });
+
+  // Socials
+  D.socials.forEach(function (s) {
+    if (s.url) $("socials").appendChild(link(s.url, "btn soc", s.label));
+    else if (PREVIEW) {
+      if (s.id !== "spotify") missing.push(s.label);
+      $("socials").appendChild(el("span", { cls: "btn soc", "aria-disabled": "true", text: s.label + " · link needed" }));
+    }
+  });
+  if (PREVIEW) {
+    if (missing.indexOf("Spotify") < 0 && spot && !spot.url) missing.push("Spotify");
+    $("preview").hidden = false;
+    $("preview-missing").textContent = missing.length ? "Still need: " + missing.join(", ") : "All links filled in";
+  }
+
+  // ---------- Pixel observation deck ----------
+  var cv = $("deck"), g = cv.getContext("2d");
+  var W = cv.width, H = cv.height;
+  var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var sprite = new Image();
+  sprite.src = "__N7_SPRITE__";
+  function rnd(seed) { return function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }; }
+  var R = rnd(7);
+  var WX = 112, WY = 12, WW = 262, WH = 104; // window
+  var stars = [];
+  for (var i = 0; i < 90; i++) stars.push({ x: WX + R() * WW, y: WY + R() * WH, b: R(), p: R() * 6.28 });
+  function px(x, y, w, h, c) { g.fillStyle = c; g.fillRect(x | 0, y | 0, w | 0, h | 0); }
+
+  function drawSpace(t) {
+    var gr = g.createLinearGradient(0, WY, 0, WY + WH);
+    gr.addColorStop(0, "#050914"); gr.addColorStop(1, "#111c3a");
+    g.fillStyle = gr; g.fillRect(WX, WY, WW, WH);
+    // nebula wash
+    var ng = g.createRadialGradient(WX + 70, WY + 30, 2, WX + 70, WY + 30, 70);
+    ng.addColorStop(0, "rgba(120,80,200,.22)"); ng.addColorStop(1, "rgba(120,80,200,0)");
+    g.fillStyle = ng; g.fillRect(WX, WY, WW, WH);
+    stars.forEach(function (s) {
+      var tw = still ? 1 : 0.6 + 0.4 * Math.sin(t / 700 + s.p);
+      var a = (0.35 + s.b * 0.65) * tw;
+      px(s.x, s.y, 1, 1, "rgba(220,235,255," + a.toFixed(2) + ")");
+      if (s.b > 0.93) { px(s.x - 1, s.y, 3, 1, "rgba(150,220,240," + (a * 0.5).toFixed(2) + ")"); px(s.x, s.y - 1, 1, 3, "rgba(150,220,240," + (a * 0.5).toFixed(2) + ")"); }
+    });
+    // planet with ember rim light, clipped to the window
+    g.save(); g.beginPath(); g.rect(WX, WY, WW, WH); g.clip();
+    var cx = WX + WW - 58, cy = WY + WH - 6, r = 40;
+    // ring back
+    g.strokeStyle = "rgba(242,144,62,.35)"; g.lineWidth = 2;
+    g.beginPath(); g.ellipse(cx, cy, r + 22, 8, -0.18, Math.PI, 2 * Math.PI); g.stroke();
+    var pg = g.createRadialGradient(cx - 22, cy - 34, 4, cx, cy, r);
+    pg.addColorStop(0, "#4a5f9e"); pg.addColorStop(0.55, "#263868"); pg.addColorStop(1, "#111a3a");
+    g.fillStyle = pg; g.beginPath(); g.arc(cx, cy, r, 0, 7); g.fill();
+    // bands
+    for (var b = 0; b < 5; b++) { g.fillStyle = "rgba(86,216,234," + (0.05 + b * 0.012) + ")"; g.save(); g.beginPath(); g.arc(cx, cy, r, 0, 7); g.clip(); g.fillRect(cx - r, cy - r + 12 + b * 12, r * 2, 3); g.restore(); }
+    // rim
+    g.strokeStyle = "#f2903e"; g.lineWidth = 1.5;
+    g.beginPath(); g.arc(cx, cy, r - 1, Math.PI * 1.05, Math.PI * 1.55); g.stroke();
+    // ring front
+    g.strokeStyle = "rgba(242,170,100,.75)"; g.lineWidth = 2;
+    g.beginPath(); g.ellipse(cx, cy, r + 22, 8, -0.18, 0, Math.PI); g.stroke();
+    // a small ship drifting across
+    var sx = still ? WX + 60 : WX + ((t / 90) % (WW + 40)) - 20, sy = WY + 22;
+    px(sx, sy, 7, 2, "#9fb3d8"); px(sx + 5, sy - 1, 3, 1, "#c9d6ee"); px(sx - 2, sy, 2, 2, (Math.floor(t / 400) % 2 || still) ? "#56d8ea" : "#1d4b57");
+    // distant station
+    px(WX + 34, WY + 64, 14, 2, "#33456e"); px(WX + 40, WY + 58, 2, 14, "#33456e");
+    px(WX + 40, WY + 63, 2, 4, (Math.floor(t / 900) % 2 || still) ? "#f2903e" : "#5a3418");
+    g.restore();
+  }
+
+  function drawRoom(t) {
+    // back wall
+    px(0, 0, W, 124, "#0d1526");
+    for (var x = 0; x < W; x += 32) px(x, 0, 1, 124, "#121d33");
+    px(0, 6, W, 1, "#16233d");
+    // window frame and mullions
+    px(WX - 4, WY - 4, WW + 8, WH + 8, "#1b2744");
+    px(WX - 3, WY - 3, WW + 6, 1, "#33466f");
+    drawSpace(t);
+    [WX + 86, WX + 174].forEach(function (mx) { px(mx, WY, 4, WH, "#1b2744"); px(mx, WY, 1, WH, "#2c3d63"); });
+    px(WX, WY + WH - 2, WW, 2, "rgba(86,216,234,.18)");
+    // sill
+    px(WX - 8, WY + WH + 4, WW + 16, 4, "#223156"); px(WX - 8, WY + WH + 4, WW + 16, 1, "#3a5182");
+    // floor
+    px(0, 124, W, H - 124, "#111a2e");
+    px(0, 124, W, 2, "#1d2a48");
+    for (var fx = 0; fx < W; fx += 24) px(fx, 126, 1, H - 126, "#18233d");
+    px(0, 146, W, 1, "#18233d");
+    // cyan floor strip
+    px(0, 128, W, 1, "rgba(86,216,234," + (still ? 0.35 : (0.25 + 0.12 * Math.sin(t / 900))).toFixed(2) + ")");
+    // window light on floor
+    g.fillStyle = "rgba(90,120,200,.07)";
+    g.beginPath(); g.moveTo(WX, 126); g.lineTo(WX + WW, 126); g.lineTo(WX + WW + 20, H); g.lineTo(WX - 30, H); g.fill();
+
+    // ---- console desk (left) ----
+    px(8, 92, 98, 6, "#24345a"); px(8, 92, 98, 1, "#3c5287");
+    px(12, 98, 6, 40, "#1a2644"); px(96, 98, 6, 40, "#1a2644");
+    px(14, 138, 90, 3, "rgba(0,0,0,.35)");
+    // monitor
+    px(20, 52, 58, 38, "#0a1222"); px(19, 51, 60, 1, "#2f4472");
+    px(22, 54, 54, 32, "#0a2732");
+    for (var k = 0; k < 6; k++) {
+      var hgt = still ? 8 + k * 2 : 6 + Math.abs(Math.sin(t / 500 + k * 1.3)) * 18;
+      px(26 + k * 8, 84 - hgt, 5, hgt, k % 2 ? "#f2903e" : "#56d8ea");
+    }
+    px(24, 56, 20, 1, "#56d8ea"); px(24, 59, 12, 1, "#2b7f8c");
+    px(46, 90, 6, 2, "#2f4472");
+    // keyboard
+    px(30, 90, 34, 2, "#3a4f80");
+    // mug with steam (cozy)
+    px(84, 84, 8, 8, "#c9673a"); px(92, 86, 2, 4, "#c9673a"); px(84, 84, 8, 1, "#e58a5a");
+    if (!still) { var st = (t / 220) % 12; px(87, 80 - st, 1, 2, "rgba(220,230,250,.35)"); px(89, 76 - (st * 0.8), 1, 2, "rgba(220,230,250,.25)"); }
+    // desk lamp warm cone
+    px(98, 62, 2, 30, "#3a4f80"); px(92, 60, 12, 4, "#f2903e");
+    g.fillStyle = "rgba(242,144,62,.10)";
+    g.beginPath(); g.moveTo(92, 64); g.lineTo(104, 64); g.lineTo(112, 92); g.lineTo(80, 92); g.fill();
+
+    // plant (right corner)
+    px(352, 118, 16, 14, "#7a4430"); px(352, 118, 16, 2, "#9a5a40");
+    var leaves = [[356, 104, 4, 14], [360, 98, 4, 20], [364, 106, 4, 12], [352, 110, 4, 8], [368, 110, 4, 8]];
+    leaves.forEach(function (l, i) { px(l[0], l[1], l[2], l[3], i % 2 ? "#2f7a5a" : "#3f9a6e"); });
+
+    // N7
+    if (sprite.complete && sprite.naturalWidth) {
+      var bob = still ? 0 : (Math.floor(t / 900) % 2);
+      g.fillStyle = "rgba(0,0,0,.35)"; g.beginPath(); g.ellipse(150, 162, 18, 3, 0, 0, 7); g.fill();
+      g.drawImage(sprite, 128, 42 + bob, 44, 120);
+    }
+  }
+
+  var last = 0;
+  function frame(t) {
+    if (t - last > 66) { last = t; drawRoom(t); }
+    if (!still) requestAnimationFrame(frame);
+  }
+  g.imageSmoothingEnabled = false;
+  sprite.onload = function () { drawRoom(0); };
+  drawRoom(0);
+  if (!still) requestAnimationFrame(frame);
+})();
+</script>

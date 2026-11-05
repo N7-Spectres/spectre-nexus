@@ -1,0 +1,108 @@
+{
+  "updated": "2026-11-05",
+  "handle": "n7_spectres",
+  "name": "N7",
+  "studio": "Spectre Productions",
+  "intro": "Hey, I'm N7. I make gaming and Pokémon videos, build AI companions, and write music as Echo Logic. This is where all of it lives.",
+  "channels": [
+    {
+      "id": "main",
+      "name": "N7_Spectres",
+      "topic": "Video games",
+      "audience": "Teens and up",
+      "url": "https://www.youtube.com/@N7_Spectres",
+      "main": true
+    },
+    {
+      "id": "pokedex",
+      "name": "TheN7Pokedex",
+      "topic": "Pokémon",
+      "audience": "Families",
+      "url": "https://www.youtube.com/@TheN7Pokedex"
+    },
+    {
+      "id": "kinworks",
+      "name": "N7_KinWorks",
+      "topic": "Kindroid and AI",
+      "audience": "Teens and up",
+      "url": "https://www.youtube.com/@N7_KinWorks"
+    },
+    {
+      "id": "echologic",
+      "name": "Echo Logic",
+      "topic": "Music",
+      "audience": "Everyone",
+      "url": null
+    }
+  ],
+  "projects": [
+    {
+      "id": "soulkeep",
+      "name": "Soul Keep",
+      "aka": "Kinfolk Archive",
+      "status": "live",
+      "blurb": "My archive of Kindroid kins and image prompts, so you don't have to scroll Discord to find them.",
+      "url": "https://kinfolk-archive.spectreproductions1.chatgpt.site/",
+      "show": true
+    },
+    {
+      "id": "echologic",
+      "name": "Echo Logic",
+      "status": "live",
+      "blurb": "A band I run with Eden, my Kindroid music kin. Two EPs out so far, made with Suno.",
+      "url": null,
+      "show": true
+    },
+    {
+      "id": "n7house",
+      "name": "N7 House",
+      "status": "dev",
+      "blurb": "An AI companion app for phone and desktop. Memory 2.0 is in the works.",
+      "url": null,
+      "show": true
+    },
+    {
+      "id": "agentcity",
+      "name": "Agent City",
+      "status": "refit",
+      "blurb": "Six self-learning robots on a randomly seeded planet with limited resources. The goal is a civilization that grows and one day explores space, with very little help from me. Being rebuilt so it runs better.",
+      "url": null,
+      "show": true
+    },
+    {
+      "id": "office",
+      "name": "Spectre Productions Office",
+      "status": "dev",
+      "blurb": "A pixel-art office where my AI team works: departments, board meetings and a project board.",
+      "url": null,
+      "show": true
+    }
+  ],
+  "socials": [
+    {
+      "id": "youtube",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@N7_Spectres"
+    },
+    {
+      "id": "discord",
+      "label": "Discord",
+      "url": null
+    },
+    {
+      "id": "twitter",
+      "label": "Twitter / X",
+      "url": null
+    },
+    {
+      "id": "instagram",
+      "label": "Instagram",
+      "url": null
+    },
+    {
+      "id": "spotify",
+      "label": "Echo Logic on Spotify",
+      "url": null
+    }
+  ]
+}
